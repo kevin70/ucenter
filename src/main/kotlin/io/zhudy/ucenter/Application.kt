@@ -1,38 +1,47 @@
 package io.zhudy.ucenter
 
 import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.Bean
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
+import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration
+import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration
+import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
 import org.springframework.context.annotation.ComponentScan
+import org.springframework.web.reactive.config.EnableWebFlux
 
 /**
  * @author Kevin Zou <kevinz@weghst.com>
  */
 @ComponentScan(basePackages = arrayOf("io.zhudy.ucenter"))
 @SpringBootApplication
-//@EnableAutoConfiguration(exclude = arrayOf(
-//    WebSocketAutoConfiguration::class.java,
-//    MultipartAutoConfiguration::class.java,
-//    DataSourceAutoConfiguration::class.java,
-//    JdbcTemplateAutoConfiguration::class.java,
-//    ValidationAutoConfiguration::class.java)
-//)}
+@EnableAutoConfiguration(exclude = arrayOf(
+        WebSocketAutoConfiguration::class,
+        MultipartAutoConfiguration::class,
+        DataSourceAutoConfiguration::class,
+        JdbcTemplateAutoConfiguration::class,
+        ValidationAutoConfiguration::class
+))
+@EnableWebFlux
 open class Application {
 
-    @Bean
-    fun embeddedServletContainerFactory() {
-//        UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory()
-//        factory.addBuilderCustomizers(b -> b.setBufferSize(1024 * 16)
-//        .setServerOption(Options.BACKLOG, 10000)
-//                .setServerOption(UndertowOptions.ALWAYS_SET_KEEP_ALIVE, false)
-//                .setServerOption(UndertowOptions.ALWAYS_SET_DATE, true)
-//                .setServerOption(UndertowOptions.ENABLE_STATISTICS, false)
-//                .setServerOption(UndertowOptions.RECORD_REQUEST_START_TIME, false)
-//                .setServerOption(UndertowOptions.ENABLE_HTTP2, true));
-//        return factory;
-    }
+
+//    @Bean
+//    fun viewResolver(messageSource: MessageSource) = MustacheViewResolver().apply {
+//        val prefix = "classpath:/templates/"
+//        val suffix = ".mustache"
+//        val loader = MustacheResourceTemplateLoader(prefix, suffix)
+//        setPrefix(prefix)
+//        setSuffix(suffix)
+//        setCompiler(Mustache.compiler().escapeHTML(false).withLoader(loader))
+//    }
+
 }
 
+/**
+ *
+ */
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
 }

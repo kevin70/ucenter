@@ -40,20 +40,44 @@ repositories {
     mavenCentral()
 }
 
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        suppressWarnings = true
+        jvmTarget = '1.8'
+    }
+}
+
 dependencies {
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.14'
 
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-jdbc') {
-        exclude module: 'tomcat-jdbc'
+    compile "javax.servlet:javax.servlet-api:3.1.0"
+//    compile('org.springframework.boot:spring-boot-starter-actuator')
+//    compile "org.springframework:spring-web-reactive:5.0.0.M5"
+    compile("org.springframework.boot:spring-boot-starter-webflux") {
+        exclude module: "hibernate-validator"
     }
-    compile('org.springframework.boot:spring-boot-starter-web') {
-        exclude module: "spring-boot-starter-tomcat"
-    }
-    compile 'org.springframework.boot:spring-boot-starter-undertow'
+
+//    compile "org.springframework:spring-web-reactive:5.0.0.M5"
+    compile "org.springframework:spring-core:5.0.0.M5"
+    compile "org.springframework:spring-beans:5.0.0.M5"
+    compile "org.springframework:spring-aop:5.0.0.M5"
+    compile "org.springframework:spring-context:5.0.0.M5"
+    compile "org.springframework:spring-expression:5.0.0.M5"
+    compile "org.springframework:spring-web:5.0.0.M5"
+    compile "org.springframework:spring-webflux:5.0.0.M5"
+//    compile "org.springframework:spring-webmvc:5.0.0.M5"
+
+    
+//    compile 'org.springframework.boot:spring-boot-starter-undertow'
 //
 //    runtime('mysql:mysql-connector-java')
 //    testCompile('org.springframework.boot:spring-boot-starter-test')

@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration
-import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration
+import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
 import org.springframework.context.annotation.ComponentScan
-import org.springframework.web.reactive.config.EnableWebFlux
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 /**
  * @author Kevin Zou <kevinz@weghst.com>
@@ -23,9 +23,8 @@ import org.springframework.web.reactive.config.EnableWebFlux
         JdbcTemplateAutoConfiguration::class,
         ValidationAutoConfiguration::class
 ))
-@EnableWebFlux
+@EnableWebMvc
 open class Application {
-
 
 //    @Bean
 //    fun viewResolver(messageSource: MessageSource) = MustacheViewResolver().apply {

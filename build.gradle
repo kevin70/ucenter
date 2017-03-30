@@ -1,13 +1,14 @@
 buildscript {
     ext {
         kotlinVersion = '1.1.1'
-        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+//        springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+        springBootVersion = '1.5.1.RELEASE'
     }
     repositories {
         mavenLocal()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url "https://repo.spring.io/snapshot" }
-        maven { url "https://repo.spring.io/milestone" }
+//        maven { url "https://repo.spring.io/snapshot" }
+//        maven { url "https://repo.spring.io/milestone" }
         maven { url 'https://plugins.gradle.org/m2/' }
         mavenCentral()
         jcenter()
@@ -35,8 +36,8 @@ sourceSets {
 repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url "https://repo.spring.io/snapshot" }
-    maven { url "https://repo.spring.io/milestone" }
+//    maven { url "https://repo.spring.io/snapshot" }
+//    maven { url "https://repo.spring.io/milestone" }
     mavenCentral()
 }
 
@@ -59,25 +60,27 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.14'
 
-    compile "javax.servlet:javax.servlet-api:3.1.0"
 //    compile('org.springframework.boot:spring-boot-starter-actuator')
 //    compile "org.springframework:spring-web-reactive:5.0.0.M5"
-    compile("org.springframework.boot:spring-boot-starter-webflux") {
-        exclude module: "hibernate-validator"
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
     }
+    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7"
 
 //    compile "org.springframework:spring-web-reactive:5.0.0.M5"
-    compile "org.springframework:spring-core:5.0.0.M5"
-    compile "org.springframework:spring-beans:5.0.0.M5"
-    compile "org.springframework:spring-aop:5.0.0.M5"
-    compile "org.springframework:spring-context:5.0.0.M5"
-    compile "org.springframework:spring-expression:5.0.0.M5"
-    compile "org.springframework:spring-web:5.0.0.M5"
-    compile "org.springframework:spring-webflux:5.0.0.M5"
+//    compile "org.springframework:spring-core:5.0.0.M5"
+//    compile "org.springframework:spring-beans:5.0.0.M5"
+//    compile "org.springframework:spring-aop:5.0.0.M5"
+//    compile "org.springframework:spring-context:5.0.0.M5"
+//    compile "org.springframework:spring-jdbc:5.0.0.M5"
+//    compile "org.springframework:spring-expression:5.0.0.M5"
+//    compile "org.springframework:spring-web:5.0.0.M5"
+//    compile "org.springframework:spring-webflux:5.0.0.M5"
 //    compile "org.springframework:spring-webmvc:5.0.0.M5"
 
-    
-//    compile 'org.springframework.boot:spring-boot-starter-undertow'
+    compile "joda-time:joda-time:2.9.9"
+    compile "com.zaxxer:HikariCP:2.6.1"
 //
 //    runtime('mysql:mysql-connector-java')
 //    testCompile('org.springframework.boot:spring-boot-starter-test')

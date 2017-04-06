@@ -1,5 +1,6 @@
 package io.zhudy.ucenter
 
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration
 import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
@@ -35,6 +37,11 @@ open class Application {
 //        setSuffix(suffix)
 //        setCompiler(Mustache.compiler().escapeHTML(false).withLoader(loader))
 //    }
+
+    @Bean
+    open fun kotlinModule(): KotlinModule {
+        return KotlinModule()
+    }
 
 }
 

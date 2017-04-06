@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RestController
 class UserResource {
 
     @PostMapping
-    fun post() {
+    fun post(): User {
         val user = User()
         user.id = 55
+        user.mobile = "13085162323"
+
+        return user
     }
 
 }

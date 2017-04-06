@@ -1,6 +1,7 @@
 package io.zhudy.ucenter.web.v1
 
 import io.zhudy.ucenter.domain.User
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class UserResource {
 
-    @PostMapping
+    @PostMapping(produces = arrayOf(MediaType.APPLICATION_JSON_VALUE))
     fun post(): User {
         val user = User()
         user.id = 55

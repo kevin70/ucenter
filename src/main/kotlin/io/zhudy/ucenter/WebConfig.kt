@@ -4,6 +4,8 @@ import io.undertow.Undertow
 import io.undertow.UndertowOptions
 import org.springframework.boot.context.embedded.undertow.UndertowBuilderCustomizer
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.converter.HttpMessageConverter
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.xnio.Options
@@ -12,7 +14,8 @@ import org.xnio.Options
  * @author Kevin Zou <kevinz@weghst.com>
  */
 @Configuration
-open class WebConfig : WebMvcConfigurerAdapter(), UndertowBuilderCustomizer {
+open class WebConfig(val mappingJackson2HttpMessageConverter: MappingJackson2HttpMessageConverter)
+    : WebMvcConfigurerAdapter(), UndertowBuilderCustomizer {
 
     override fun customize(builder: Undertow.Builder) {
         builder.setBufferSize(1024 * 16)
@@ -30,5 +33,9 @@ open class WebConfig : WebMvcConfigurerAdapter(), UndertowBuilderCustomizer {
                 .allowedMethods("*")
                 .allowCredentials(false)
                 .maxAge(3600)
+    }
+
+    override fun configureMessageConverters(converters: MutableList<HttpMessageConverter<*>>) {
+        converters.add(mappingJackson2HttpMessageConverter)
     }
 }

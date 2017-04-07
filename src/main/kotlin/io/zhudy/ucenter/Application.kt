@@ -1,6 +1,8 @@
 package io.zhudy.ucenter
 
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import io.zhudy.ucenter.utils.CodeGenerator
+import io.zhudy.ucenter.utils.SnowflakeCodeGenerator
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -38,11 +40,21 @@ open class Application {
 //        setCompiler(Mustache.compiler().escapeHTML(false).withLoader(loader))
 //    }
 
+    /**
+     *
+     */
     @Bean
     open fun kotlinModule(): KotlinModule {
         return KotlinModule()
     }
 
+    /**
+     *
+     */
+    @Bean
+    open fun codeGenerator(): CodeGenerator {
+        return SnowflakeCodeGenerator(1)
+    }
 }
 
 /**

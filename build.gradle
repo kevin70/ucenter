@@ -67,6 +67,8 @@ dependencies {
     }
     compile 'org.springframework.boot:spring-boot-starter-undertow'
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.7"
+    compile "org.springframework:spring-jdbc:4.3.6.RELEASE"
+    compile "com.relops:snowflake:1.1"
 
 //    compile "org.springframework:spring-web-reactive:5.0.0.M5"
 //    compile "org.springframework:spring-core:5.0.0.M5"

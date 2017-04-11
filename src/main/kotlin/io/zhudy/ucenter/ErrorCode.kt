@@ -3,7 +3,9 @@ package io.zhudy.ucenter
 /**
  * @author Kevin Zou (kevinz@weghst.com)
  */
-enum class ErrorCode(code: Int, message: String) {
+enum class ErrorCode(val code: Int, val message: String) {
+
+    E0(0, "未知错误"),
 
     // 100 - 999 系统错误码
     E100(100, "系统错误"),
@@ -19,5 +21,12 @@ enum class ErrorCode(code: Int, message: String) {
     // 10000 - 10499 用户错误码
     E10000(10000, ""),
     E10001(10001, "邮箱已存在"),
-    E10002(10002, "手机已存在")
+    E10002(10002, "手机已存在"),
+    E10003(10003, "密码不匹配")
+
+    ;
+
+    override fun toString(): String {
+        return "$message($code)"
+    }
 }

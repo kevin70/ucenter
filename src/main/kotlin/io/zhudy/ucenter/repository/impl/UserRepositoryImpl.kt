@@ -25,14 +25,14 @@ WHERE id=:id
 """
     val deleteByIdSql = "DELETE FROM t_user WHERE id=:id"
     val findByIdSql = "SELECT * FROM t_user WHERE id=:id"
-    val findByCodeSql = "SELECT * FROM t_user WHERE code=:code"
+    val findByCodeSql = "SELECT * FROM t_user WHERE errorCode=:errorCode"
     val findByEmailSql = "SELECT * FROM t_user WHERE email=:email"
     val findByMobileSql = "SELECT * FROM t_user WHERE mobile=:mobile"
 
     val fullMapper = RowMapper<User> { rs: ResultSet, _: Int ->
         User(
                 id = rs.getLong("id"),
-                code = rs.getLong("code"),
+                code = rs.getLong("errorCode"),
                 mobile = rs.getString("mobile"),
                 email = rs.getString("email"),
                 password = rs.getString("password"),
@@ -64,7 +64,7 @@ WHERE id=:id
     }
 
     override fun findByCode(code: Long): User {
-        return template.queryForObject(findByCodeSql, MapSqlParameterSource("code", code), fullMapper)
+        return template.queryForObject(findByCodeSql, MapSqlParameterSource("errorCode", code), fullMapper)
     }
 
     override fun findByEmail(email: String): User {

@@ -2,7 +2,9 @@ package io.zhudy.ucenter
 
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.zhudy.ucenter.utils.CodeGenerator
+import io.zhudy.ucenter.utils.SimpleTokenGenerator
 import io.zhudy.ucenter.utils.SnowflakeCodeGenerator
+import io.zhudy.ucenter.utils.TokenGenerator
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -54,6 +56,11 @@ open class Application {
     @Bean
     open fun codeGenerator(): CodeGenerator {
         return SnowflakeCodeGenerator(1)
+    }
+
+    @Bean
+    open fun tokenGenerator(): TokenGenerator {
+        return SimpleTokenGenerator()
     }
 }
 

@@ -19,9 +19,9 @@ interface UserRepository {
 
     fun findById(id: Long): User
 
-    fun findByCode(code: Long): User
+    fun findByCode(code: Long): User?
 
-    fun findByEmail(email: String): User
+    fun findByEmail(email: String): User?
 
-    fun findByMobile(mobile: String): User
+    fun findByMobile(mobile: String): User?
 }

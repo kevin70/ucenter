@@ -5,7 +5,7 @@ import com.relops.snowflake.Snowflake
 /**
  * @author Kevin Zou (kevinz@weghst.com)
  */
-class SnowflakeCodeGenerator(val node: Int) : CodeGenerator {
+class SnowflakeCodeGenerator(node: Int) : CodeGenerator {
 
     val snowflake = Snowflake(node)
 

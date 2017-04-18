@@ -29,7 +29,7 @@ WHERE id=:id
     val findByEmailSql = "SELECT * FROM t_user WHERE email=:email"
     val findByMobileSql = "SELECT * FROM t_user WHERE mobile=:mobile"
 
-    val fullMapper = RowMapper<User> { rs: ResultSet, _: Int ->
+    val fullMapper = RowMapper<User> { rs: ResultSet, i: Int ->
         User(
                 id = rs.getLong("id"),
                 code = rs.getLong("errorCode"),

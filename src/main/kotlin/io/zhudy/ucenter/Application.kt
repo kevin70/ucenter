@@ -11,11 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration
 import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration
-import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
-import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 /**
  * @author Kevin Zou <kevinz@weghst.com>
@@ -24,12 +22,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = arrayOf(
         WebSocketAutoConfiguration::class,
-        MultipartAutoConfiguration::class,
         DataSourceAutoConfiguration::class,
         JdbcTemplateAutoConfiguration::class,
         ValidationAutoConfiguration::class
 ))
-@EnableWebMvc
 open class Application {
 
 //    @Bean
@@ -69,4 +65,6 @@ open class Application {
  */
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
+//    ByteBuddyAgent.install()
+//    println(ByteBuddyAgent.getInstrumentation())
 }

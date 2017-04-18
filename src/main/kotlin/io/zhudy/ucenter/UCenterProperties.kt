@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 /**
  * @author Kevin Zou (kevinz@weghst.com)
  */
-@ConfigurationProperties("u-center")
+@ConfigurationProperties("ucenter")
 class UCenterProperties {
 
     var jdbcUrl: String? = null

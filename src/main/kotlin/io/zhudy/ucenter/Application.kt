@@ -1,6 +1,7 @@
 package io.zhudy.ucenter
 
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.zaxxer.hikari.HikariDataSource
 import io.zhudy.ucenter.utils.CodeGenerator
 import io.zhudy.ucenter.utils.SimpleTokenGenerator
 import io.zhudy.ucenter.utils.SnowflakeCodeGenerator
@@ -14,6 +15,8 @@ import org.springframework.boot.autoconfigure.validation.ValidationAutoConfigura
 import org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
+import javax.sql.DataSource
 
 /**
  * @author Kevin Zou <kevinz@weghst.com>
@@ -44,6 +47,16 @@ open class Application {
     @Bean
     open fun kotlinModule(): KotlinModule {
         return KotlinModule()
+    }
+
+    @Bean
+    open fun dataSource(): DataSource {
+        return HikariDataSource()
+    }
+
+    @Bean
+    open fun namedParameterJdbcTemplate(dataSource: DataSource): NamedParameterJdbcTemplate {
+        return NamedParameterJdbcTemplate(dataSource)
     }
 
     /**

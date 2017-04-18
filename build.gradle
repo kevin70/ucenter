@@ -33,7 +33,7 @@ sourceCompatibility = 1.8
 
 ext {
     kotlinVersion = '1.1.1'
-    springVersion = '5.0.0.M5'
+    springVersion = '5.0.0.BUILD-SNAPSHOT'
     springBootVersion = '2.0.0.BUILD-SNAPSHOT'
 }
 

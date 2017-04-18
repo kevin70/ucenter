@@ -1,5 +1,6 @@
 package io.zhudy.ucenter.web
 
+import io.zhudy.ucenter.dto.OAuth2Token
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 class DefaultResource {
 
     @GetMapping(path = arrayOf("/"))
-    fun index(): String {
-        return "HellGGGo"
+    fun index(): OAuth2Token {
+        return OAuth2Token(accessToken = "HELLLO", refreshToken = "GGGGGGGGGGGGGGG")
     }
 }

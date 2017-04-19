@@ -29,33 +29,23 @@ import javax.sql.DataSource
         JdbcTemplateAutoConfiguration::class,
         ValidationAutoConfiguration::class
 ))
-open class Application {
-
-//    @Bean
-//    fun viewResolver(messageSource: MessageSource) = MustacheViewResolver().apply {
-//        val prefix = "classpath:/templates/"
-//        val suffix = ".mustache"
-//        val loader = MustacheResourceTemplateLoader(prefix, suffix)
-//        setPrefix(prefix)
-//        setSuffix(suffix)
-//        setCompiler(Mustache.compiler().escapeHTML(false).withLoader(loader))
-//    }
+class Application {
 
     /**
      *
      */
     @Bean
-    open fun kotlinModule(): KotlinModule {
+    fun kotlinModule(): KotlinModule {
         return KotlinModule()
     }
 
     @Bean
-    open fun dataSource(): DataSource {
+    fun dataSource(): DataSource {
         return HikariDataSource()
     }
 
     @Bean
-    open fun namedParameterJdbcTemplate(dataSource: DataSource): NamedParameterJdbcTemplate {
+    fun namedParameterJdbcTemplate(dataSource: DataSource): NamedParameterJdbcTemplate {
         return NamedParameterJdbcTemplate(dataSource)
     }
 
@@ -63,12 +53,12 @@ open class Application {
      *
      */
     @Bean
-    open fun codeGenerator(): CodeGenerator {
+    fun codeGenerator(): CodeGenerator {
         return SnowflakeCodeGenerator(1)
     }
 
     @Bean
-    open fun tokenGenerator(): TokenGenerator {
+    fun tokenGenerator(): TokenGenerator {
         return SimpleTokenGenerator()
     }
 }

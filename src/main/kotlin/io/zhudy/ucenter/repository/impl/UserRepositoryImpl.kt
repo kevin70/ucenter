@@ -14,7 +14,7 @@ import java.sql.ResultSet
  * @author Kevin Zou (kevinz@weghst.com)
  */
 @Repository
-open class UserRepositoryImpl(val template: NamedParameterJdbcTemplate) : UserRepository {
+class UserRepositoryImpl(val template: NamedParameterJdbcTemplate) : UserRepository {
 
     val insertSql = """INSERT INTO t_user(mobile, email, password, nickname, avatar, created_time)
 VALUES(:mobile, :email, :password, :nickname, :avatar, unix_timestamp())
